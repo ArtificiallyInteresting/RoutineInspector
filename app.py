@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline, Conversation
 
 model_name = "deepset/roberta-base-squad2"
 
@@ -12,15 +12,17 @@ with st.form("my_form"):
 
    f = open("prompt.txt")
    prompt = f.readlines()
+   conversation = Conversation("\n".join(prompt))
 
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
-       QA_input = {
-           'question': input,
-           'context': "\n".join(prompt)
-       }
-       res = nlp(QA_input)
+       # QA_input = {
+       #     'question': input,
+       #     'context':
+       # }
+       # res = nlp(QA_input)
+       res = nlp(conversation).generated_response[-1]
        st.write(res)
 
 
