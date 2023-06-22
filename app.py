@@ -22,7 +22,13 @@ with st.form("my_form"):
        #     'context':
        # }
        # res = nlp(QA_input)
-       res = nlp(conversation).generated_responses[-1]
+       st.write("Response:\n")
+       conversation = nlp(conversation)
+       res = conversation.generated_responses[-1]
+       st.write(res)
+       st.write("After user input:\n")
+       conversation.add_user_input(input)
+       res = conversation.generated_responses[-1]
        st.write(res)
 
 
