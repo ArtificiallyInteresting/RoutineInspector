@@ -4,7 +4,7 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 model_name = "deepset/roberta-base-squad2"
 
 # a) Get predictions
-nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
+nlp = pipeline('conversational', model=model_name, tokenizer=model_name)
 with st.form("my_form"):
    st.write("Inside the form")
 
