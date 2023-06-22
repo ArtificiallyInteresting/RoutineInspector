@@ -10,12 +10,15 @@ with st.form("my_form"):
 
    input = st.text_input('What is your current routine?')
 
+   f = open("prompt.txt")
+   prompt = f.readlines()
+
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
        QA_input = {
            'question': input,
-           'context': 'Evaluate this weightlifting routine and make suggestions'
+           'context': prompt
        }
        res = nlp(QA_input)
        st.write(res)
