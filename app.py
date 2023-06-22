@@ -18,7 +18,7 @@ with st.form("my_form"):
    if submitted:
        QA_input = {
            'question': input,
-           'context': prompt
+           'context': "\n".join(prompt)
        }
        res = nlp(QA_input)
        st.write(res)
