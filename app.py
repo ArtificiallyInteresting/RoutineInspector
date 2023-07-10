@@ -3,7 +3,8 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline,
 
 # model_name = "deepset/roberta-base-squad2"
 # model_name = "microsoft/DialoGPT-medium"
-model_name = "PygmalionAI/pygmalion-6b"
+# model_name = "PygmalionAI/pygmalion-6b"
+model_name = "facebook/blenderbot-400M-distill"
 # a) Get predictions
 nlp = pipeline('conversational', model=model_name, tokenizer=model_name)
 with st.form("my_form"):
