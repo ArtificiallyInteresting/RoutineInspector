@@ -27,6 +27,7 @@ with st.form("my_form"):
        res = conversation.generated_responses[-1]
        st.write(res)
        st.write("After user input:\n")
+       st.write(input)
        conversation.add_user_input(input)
        conversation = nlp(conversation)
        res = conversation.generated_responses
