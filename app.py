@@ -2,7 +2,8 @@ import streamlit as st
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline, Conversation
 
 # model_name = "deepset/roberta-base-squad2"
-model_name = "microsoft/DialoGPT-medium"
+# model_name = "microsoft/DialoGPT-medium"
+model_name = "PygmalionAI/pygmalion-6b"
 # a) Get predictions
 nlp = pipeline('conversational', model=model_name, tokenizer=model_name)
 with st.form("my_form"):
