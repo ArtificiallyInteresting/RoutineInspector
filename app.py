@@ -29,7 +29,7 @@ with st.form("my_form"):
        st.write("After user input:\n")
        conversation.add_user_input(input)
        conversation = nlp(conversation)
-       res = conversation.generated_responses[-1]
+       res = conversation.generated_responses
        st.write(res)
 
 
