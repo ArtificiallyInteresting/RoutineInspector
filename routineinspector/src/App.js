@@ -20,7 +20,20 @@ function RoutineForm() {
   const [routine, setRoutine] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${routine}`)
+    // alert(`The name you entered was: ${routine}`)
+    fetch("http://localhost:3001/routine", {
+      method: "POST",
+      body: JSON.stringify({
+        userId: 1,
+        title: "Fix my bugs",
+        completed: false
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => console.log(response.json()));
+    
+    
   }
   return (
     <form onSubmit={handleSubmit}>
