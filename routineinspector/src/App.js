@@ -24,9 +24,7 @@ function RoutineForm() {
     fetch("http://localhost:3001/routine", {
       method: "POST",
       body: JSON.stringify({
-        userId: 1,
-        title: "Fix my bugs",
-        completed: false
+        routine: routine
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"

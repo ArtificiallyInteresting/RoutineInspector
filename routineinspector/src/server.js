@@ -3,6 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const http = require('http');
 const cors = require('cors');
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express()
 app.use(cors({
     origin: '*'
@@ -10,10 +11,7 @@ app.use(cors({
 
 const hostname = '127.0.0.1';
 const port = 3001;
-
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.use(bodyParser.json());
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -22,16 +20,16 @@ const openai = new OpenAIApi(configuration);
 
 app.post('/routine', (req, res) => {
     console.log(req);
-    res.send('Hello World!')
+    // res.send('Hello World!')
     //make api call to openAI
 
   try {
     const completion = openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(req.body.routine),
       temperature: 0.6,
     });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    res.status(200).json(JSON.stringify(completion));
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -61,3 +59,6 @@ Animal: ${capitalizedAnimal}
 Names:`;
 }
 
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
